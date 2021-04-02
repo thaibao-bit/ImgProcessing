@@ -1,5 +1,6 @@
-from tkinter import Frame, Button, LEFT, X, BOTTOM, RIGHT, TOP
+
 from tkinter import filedialog
+from tkinter import *
 from filterFrame import FilterFrame
 from adjustFrame import AdjustFrame
 import cv2
@@ -10,13 +11,15 @@ class EditBar(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master=master)
 
+        self.file = PhotoImage(file="/home/thaibao/PycharmProjects/ImgProcessing/setting.png")
+        self.photo = self.file.subsample(9,9)
         self.new_button = Button(self, text="New")
         self.save_button = Button(self, text="Save")
         self.save_as_button = Button(self, text="Save As")
         self.draw_button = Button(self, text="Draw")
         self.crop_button = Button(self, text="Crop")
         self.filter_button = Button(self, text="Filter")
-        self.adjust_button = Button(self, text="Adjust")
+        self.adjust_button = Button(self, text="Adjust",image=self.photo,compound=LEFT)
         self.clear_button = Button(self, text="Clear")
 
         self.new_button.bind("<ButtonRelease>", self.new_button_released)
